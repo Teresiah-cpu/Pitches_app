@@ -1,10 +1,11 @@
+
 from flask import Flask, render_template
 app = Flask(__name__)
 
 pitches = [
     {
             'author': 'Teresiah',
-            'title':  'Pitch',
+            'title':  'Pitch1',
             'content': 'My first pitch',
             'date_created': 'May 8, 2022'
         },
