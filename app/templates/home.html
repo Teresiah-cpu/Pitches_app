@@ -1,8 +1,15 @@
 {% extends "index.html" %}
 {% block content %}
     {% for pitch in pitches %}
-        <h1>{{pitch.title}}</h1>
-        <p>By {{ pitch.author }} created on {{pitch.date_created}}</p>
-        <p>{{ pitch.content}}</p>
+        <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <h2><a class="mr-2" href="#">{{ pitch.author }}</a></h2>
+                    <small class="text-dark">{{ pitch.date_posted }}</small>
+                </div>
+                <h2><a class="article-title" href="#">{{ pitch.title }}</a></h2>
+                <p class="article-content">{{ pitch.content }}</p>
+            </div>
+        </article>
     {% endfor %}    
 {% endblock %}
