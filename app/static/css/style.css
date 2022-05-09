@@ -6,7 +6,7 @@
 
 body {
     background: #fafafa;
-    color: #333333;
+    color: #1f1919;
     margin-top: 5rem;
 }
 
@@ -16,7 +16,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: #444444;
+    color: rgb(168, 50, 50);
 }
 
 .bg-steel {
@@ -24,13 +24,5 @@ h6 {
 }
 
 .site-header .navbar-nav .nav-link {
-    color: #cbd5db;
-}
-
-.site-header .navbar-nav .nav-link:hover {
-    color: #ffffff;
-}
-
-.site-header .navbar-nav .nav-link.active {
-    font-weight: bold;
+    color: white;
 }
