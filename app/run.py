@@ -1,6 +1,6 @@
 
 from flask import Flask, render_template
-from forms import RegistrationForm, LoginForm
+from form import RegistrationForm, LoginForm
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = 'teresiah1githua23'
@@ -26,18 +26,27 @@ pitches = [
 def home():
     return render_template('home.html', pitches=pitches)
 
-@app.route("/register")
-def register():
-    return render_template('register.html')
+# @app.route("/register")
+# def registering():
+#     return render_template('register.html')
+
 
 
 
 @app.route("/login")
-def login():
+def loginn():
     return render_template('login.html')
+# creating register and login forms routes
 
+@app.route("/register")
+def register():
+    form = RegistrationForm()
+    return render_template('register.html', form=form)
 
-
+@app.route("/login")
+def login():
+    form = LoginForm()
+    return render_template('login.html', form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
