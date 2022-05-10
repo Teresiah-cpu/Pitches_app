@@ -38,12 +38,21 @@
     </header>
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
-                {% block content %}{% endblock %}
-            </div>
+                    <div class="col-md-8">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        {% block content %}{% endblock %}
+                    </div>
             <div class="col-md-4">
                 <div class="content-section">
-                    <h1>Add or view other pitches.</h1>
+                    <h1>view other pitches.</h1>
                     <ul class="list-group">
                         <li class="list-group-item list-group-item-light">Common pitches</li>
                         <li class="list-group-item list-group-item-light">Interview pitches</li>

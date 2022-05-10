@@ -1,5 +1,6 @@
 
-from flask import Flask, render_template
+from crypt import methods
+from flask import Flask, render_template,flash,redirect, url_for
 from form import RegistrationForm, LoginForm
 app = Flask(__name__)
 
@@ -23,8 +24,9 @@ pitches = [
 
 
 @app.route("/")
+@app.route("/home")
 def home():
-    return render_template('home.html', pitches=pitches)
+    return render_template('home.html',pitches=pitches)
 
 # @app.route("/register")
 # def registering():
@@ -33,20 +35,24 @@ def home():
 
 
 
-@app.route("/login")
-def loginn():
-    return render_template('login.html')
+# @app.route("/login")
+# def loginn():
+#     return render_template('login.html')
 # creating register and login forms routes
 
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    return render_template('register.html', form=form)
+    if form.validate_on_submit():
+        flash(f'Account created for {form.username.data}!', 'success')
+        return redirect(url_for('home'))
+    return render_template('register.html', title='Register', form=form)
+
 
 @app.route("/login")
 def login():
     form = LoginForm()
-    return render_template('login.html', form=form)
+    return render_template('login.html',form=form)
 
 if __name__ == '__main__':
     app.run(debug=True)
